@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "logistream"
+version = "1.0.0"
+description = "LogiStream - AI-powered supply chain control tower"
+requires-python = ">=3.9"
+
+[tool.vercel]
+# Specify the FastAPI app entrypoint for Vercel
+framework = "fastapi"

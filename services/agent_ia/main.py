@@ -6,7 +6,7 @@ Endpoints :
   GET  /health   – Health check
 """
 
-import os, json, pickle, logging, time
+import os, json, pickle, logging, time, re
 from typing import Any
 from decimal import Decimal
 from datetime import datetime, date
@@ -17,6 +17,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import numpy as np
 from groq import Groq
+from openai import OpenAI
 
 
 def json_safe(obj):
@@ -35,6 +36,8 @@ ML_MODEL_PATH = os.getenv("ML_MODEL_PATH", "/app/ml/delay_model.pkl")
 LLM_PROVIDER  = os.getenv("LLM_PROVIDER", "groq")   # groq | openai | mistral | mock
 GROQ_API_KEY  = os.getenv("GROQ_API_KEY", "")
 OPENAI_API_KEY= os.getenv("OPENAI_API_KEY", "")
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:latest")
 
 # ── FastAPI ──────────────────────────────────────────────────────
 app = FastAPI(title="LogiStream Agent IA", version="1.0.0")
