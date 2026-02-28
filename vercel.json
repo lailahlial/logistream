@@ -1,6 +1,7 @@
 {
-  "buildCommand": "pip install -r requirements.txt",
+  "buildCommand": "pip install -r requirements.txt && pip install -r services/agent_ia/requirements.txt",
   "framework": "fastapi",
+  "outputDirectory": "./api",
   "env": {
     "PYTHONUNBUFFERED": "1"
   }
